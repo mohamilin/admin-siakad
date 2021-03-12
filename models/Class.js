@@ -21,7 +21,13 @@ const classSchema = new mongoose.Schema({
     jurusan : {
         type: String,
         default: null
-    }
+    },
+    wali_kelas : [{
+        guru_id: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'teachers'
+        }
+    }]
 });
 
 const Class = new mongoose.model('classes', classSchema);
