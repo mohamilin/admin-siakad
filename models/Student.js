@@ -89,6 +89,10 @@ const studentSchema = new mongoose.Schema({
             type: String
         }
     },
+    kelas_id : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref : 'classes'
+    },
     status: {
         type: String,
         enum: ['aktif', 'pindah', 'alumni'],

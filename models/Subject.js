@@ -5,9 +5,9 @@ const classSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    sekolah_id: {
+    kelas_id: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'schools',
+        ref: 'classes',
     },
     teacher_id: {
         type: mongoose.Schema.Types.ObjectId,
