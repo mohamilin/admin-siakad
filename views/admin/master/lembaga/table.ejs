@@ -1,34 +1,72 @@
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Data Lembaga</h1>
+  <!-- Page Heading -->
+  <!-- Alert -->
+  <%- include('../../../partial/message.ejs')  %> 
+ 
+  <div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Data Lembaga</h1>
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <!-- Button trigger modal -->
+      <button
+        type="button"
+        class="btn btn-primary"
+        data-toggle="modal"
+        data-target="#add"
+      >
+        <i class="fas fa-plus-circle"></i>
+        <span style="margin-right: 5px"></span>Tambah Data
+      </button>
     </div>
-    <div class="card shadow mb-4">
-        <div class="card-header py-3">
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
-                Tambah Data
-              </button>
-        </div>
-        <div class="card-body">
-            <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>MI Assalam</td>
-                            <td>Edit</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <div class="card-body">
+      <div class="table-responsive">
+        <table
+          class="table table-bordered"
+          id="dataTable"
+          width="100%"
+          cellspacing="0"
+        >
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < lembaga.length; i++) { %>
+            <tr>
+              <td><%= i + 1 %></td>
+              <td><%= lembaga[i].nama_lembaga %></td>
+              <td>
+                <form
+                  action="/admin/lembaga/<%= lembaga[i].id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <a
+                    href="javascript:void();"
+                    type="button"
+                    class="btn btn-warning btn-icon-split button-update"
+                    data-id="<%= lembaga[i]._id%>"
+                    data-name="<%= lembaga[i].nama_lembaga %>"
+                  >
+                    <span class="icon text-white-50">
+                      <i class="fas fa-edit"></i>
+                    </span>
+                  </a>
+                  <button type="submit" class="btn btn-danger btn-icon-split">
+                    <span class="icon text-white-50">
+                      <i class="fas fa-trash"></i>
+                    </span>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 </div>
