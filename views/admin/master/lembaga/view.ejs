@@ -67,6 +67,14 @@
         $(".id").val(id);
         $(".name").val(name);
       });
+
+      $(document).ready(function() {
+        window.setTimeout(function() {
+            $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                $(this).remove();
+            });
+        }, 1000);
+    });    
     </script>
   </div>
 </body>

@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const {viewLogin, addLogin} = require("../controllers/admin")
 const {viewDashboard} = require("../controllers/dashboard")
 const {viewLembaga, addLembaga, editLembaga, deleteLembaga} = require("../controllers/lembaga")
 const {viewTahunPelajaran} = require("../controllers/tahunPelajaran")
@@ -7,6 +8,8 @@ const {viewGuru} = require("../controllers/guru")
 const {viewKelas} = require("../controllers/kelas")
 const {viewMatePelajaran} = require("../controllers/mapel")
 
+router.get('/login', viewLogin );
+router.post('/login', addLogin);
 
 router.get('/dashboard', viewDashboard)
 router.get('/tahun-pelajaran', viewTahunPelajaran)
